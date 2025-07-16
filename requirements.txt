@@ -1,0 +1,4 @@
+whisper
+llama-cpp-python
+torch
+textwrap3
