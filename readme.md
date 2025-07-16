@@ -9,7 +9,7 @@ Everything here is built with **free and open source software** and designed to 
 
 ---
 
-## 🛠 Features
+## Features
 
 - Record system audio (or switch to mic)
 - Transcribe using OpenAI's [Whisper](https://github.com/openai/whisper)
@@ -39,7 +39,7 @@ Before running the scripts, make sure you have the following system tools instal
 git clone https://github.com/yourusername/meeting-transcriber.git
 cd meeting-transcriber
 ```
-These are used to capture system audio (parec from PulseAudio), convert audio formats (ffmpeg), and list available devices (pactl).
+These are used to capture system audio (`parec` from PulseAudio), convert audio formats (`ffmpeg`), and list available devices (`pactl`).
 
 ### 2. Clone this repo
 
@@ -70,7 +70,7 @@ pip install -r requirements.txt
 
 ---
 
-## ▶️ How to Run
+## How to Run
 
 ### Step 1: Record Audio
 
