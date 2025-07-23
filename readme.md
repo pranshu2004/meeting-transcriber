@@ -43,6 +43,12 @@ sudo apt install ffmpeg pulseaudio-utils
 ```
 These are used to capture system audio (`parec` from PulseAudio), convert audio formats (`ffmpeg`), and list available devices (`pactl`).
 
+Create the required folders if they don't already exist:
+
+```bash
+mkdir -p recordings transcripts summaries
+```
+
 ### 2. Clone this repo
 
 ```bash
@@ -92,7 +98,8 @@ python run_meeting_pipeline.py
 
 ### Output File Structure
 
-```recordings/
+```bash
+recordings/
   meeting123_20250722_audio.wav
 
 transcripts/
