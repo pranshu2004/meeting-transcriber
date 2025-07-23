@@ -1,22 +1,21 @@
 import whisper
+import os
+import sys
 
-# Load the Whisper model (tiny/base/small/medium/large)
-model = whisper.load_model("small")  # you can use "medium" or "large" if GPU available
+def main():
+    session_id = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("SESSION_ID", "meeting")
+    audio_path = f"./recordings/{session_id}_audio.wav"
+    transcript_path = f"./transcripts/{session_id}_transcript.txt"
 
-# Path to your recorded system audio
-AUDIO_FILE = "system_output.wav"
+    model = whisper.load_model("small")
+    print("Transcribing...")
+    result = model.transcribe(audio_path)
+    transcript = result["text"]
 
-# Transcribe the audio
-print("Transcribing...")
-result = model.transcribe(AUDIO_FILE)
+    with open(transcript_path, "w") as f:
+        f.write(transcript)
 
-# Print transcript
-transcript = result["text"]
-print("\nTranscript:\n")
-print(transcript)
+    print(f"Saved transcript to {transcript_path}")
 
-# Save to text file
-with open("transcript.txt", "w") as f:
-    f.write(transcript)
-
-print("\nSaved transcript to transcript.txt")
+if __name__ == "__main__":
+    main()
