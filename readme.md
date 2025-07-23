@@ -9,7 +9,7 @@ Everything here is built with **free and open source software** and designed to 
 
 ---
 
-## ✨ Features
+## Features
 
 - Record system audio (or mic)
 - Transcribe using [OpenAI Whisper](https://github.com/openai/whisper)
@@ -135,7 +135,7 @@ This project is fully open source and licensed under the MIT License.
 
 ---
 
-📌 Built for people who prefer local control, privacy, and open tools.
+Built for people who prefer local control, privacy, and open tools.
 
 ## Acknowledgements
 
