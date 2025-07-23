@@ -9,17 +9,19 @@ Everything here is built with **free and open source software** and designed to 
 
 ---
 
-## Features
+## ✨ Features
 
-- Record system audio (or switch to mic)
-- Transcribe using OpenAI's [Whisper](https://github.com/openai/whisper)
+- Record system audio (or mic)
+- Transcribe using [OpenAI Whisper](https://github.com/openai/whisper)
 - Summarize using [Mistral-7B Instruct](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1) via `llama-cpp-python`
-- 💻 Runs on CPU (no GPU required) and fully offline, open-source, hackable
+- CPU-only — no GPU required
+- Auto-saves recordings, transcripts, and summaries in session-specific folders
+- Hackable, scriptable, fully offline
 
 
 ---
 
-## Environment Used
+## Tested Environment
 
 - **OS**: Ubuntu 20.04.6 LTS
 - **Python**: 3.11
@@ -35,9 +37,9 @@ Everything here is built with **free and open source software** and designed to 
 ### 1. Install system dependencies
 
 Before running the scripts, make sure you have the following system tools installed:
+
 ```bash
-git clone https://github.com/yourusername/meeting-transcriber.git
-cd meeting-transcriber
+sudo apt install ffmpeg pulseaudio-utils
 ```
 These are used to capture system audio (`parec` from PulseAudio), convert audio formats (`ffmpeg`), and list available devices (`pactl`).
 
@@ -72,31 +74,34 @@ pip install -r requirements.txt
 
 ## How to Run
 
-### Step 1: Record Audio
+### Full Pipeline (One Command)
 
 ```bash
-python record_system.py
+python run_meeting_pipeline.py
 ```
 
+- Prompts you to name the meeting
 - Records until you press `Enter`
 - Make sure the source monitor is correct (edit `record_system.py`, update the `parec -d` device if needed)
 - Use `pactl list sources short` to find the correct monitor
+- Automatically transcribes and summarizes it
+- Saves everything in:
+    -`./recordings/<name>_audio.wav`
+    -`./transcripts/<name>_transcript.txt`
+    -`./summaries/<name>_summary.txt`
 
-### Step 2: Transcribe Audio
+### Output File Structure
 
-```bash
-python transcriber.py
+```recordings/
+  meeting123_20250722_audio.wav
+
+transcripts/
+  meeting123_20250722_transcript.txt
+
+summaries/
+  meeting123_20250722_summary.txt
+
 ```
-
-- Outputs to `transcript.txt`
-
-### Step 3: Summarize Transcript
-
-```bash
-python summariser.py
-```
-
-- Outputs batchwise bullet-point summaries to `final_summary.txt`
 
 ---
 
@@ -104,7 +109,6 @@ python summariser.py
 
 - **Speaker diarisation** (label different speakers)
   - Might require some level of user input
-- **One main orchestrator script** for the full flow
 - Make it more usable for non-devs (e.g., GUI or CLI prompts)
 - No hardcoding: auto-detect system source instead of manually editing `record_system.py`
 - Maybe deploy it as a simple app, browser extension, or Electron GUI
@@ -123,6 +127,8 @@ Pull requests welcome — this is a very rough but functional start. If you have
 This project is fully open source and licensed under the MIT License.
 
 ---
+
+📌 Built for people who prefer local control, privacy, and open tools.
 
 ## Acknowledgements
 
