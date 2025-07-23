@@ -17,8 +17,6 @@ def main():
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     session_id = f"{meeting_name}_{timestamp}"
 
-    os.environ["SESSION_ID"] = session_id  # Pass to subprocesses via env var
-
     print(f"\nSession ID: {session_id}")
     run_recording(session_id)
     run_transcription(session_id)
